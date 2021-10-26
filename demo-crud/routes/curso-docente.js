@@ -34,7 +34,7 @@ router.post('/cursos-docentes',(req,res)=>{
     let emp=req.body;
     console.log(emp);
     mysqlConnection.query('insert into curso_docente (id_docente, id_curso, stauts, fecha_inicio, fecha_fin) values (?,?,?,?,?)',
-    [emp.Id_docente,emp.Id_curso,emp.Stauts,emp.Fecha_inicio,emp.Fecha_fin],(err,result)=>{
+    [emp.id_docente,emp.id_curso,emp.stauts,emp.fecha_inicio,emp.fecha_fin],(err,result)=>{
         if(!err){
             console.log(result);
             res.status(201).send('created Successfully');
@@ -50,7 +50,7 @@ router.put('/cursos-docentes/:id',(req,res)=>{
     console.log('Update Cursos Docentes')
     let emp=req.body;
     mysqlConnection.query('update curso_docente set id_docente=?, id_curso=?, stauts=?, fecha_inicio=?, fecha_fin=? where id=?',
-    [emp.Id_docente,emp.Id_curso,emp.Stauts,emp.Fecha_inicio,emp.Fecha_fin,req.params.id],(err,result)=>{
+    [emp.id_docente,emp.id_curso,emp.stauts,emp.fecha_inicio,emp.fecha_fin,req.params.id],(err,result)=>{
         if(!err){
             console.log(result);
             res.status(202).send('Updated Successfully');

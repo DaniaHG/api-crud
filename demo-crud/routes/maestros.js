@@ -3,10 +3,10 @@ const router = express.Router();
 
 const mysqlConnection = require('../configurations/db-conf');
 
-/*---------------------------------------Maestros----------------------------------------*/
-/*Get-Maestros*/
-router.get('/maestros',(req,res)=>{
-    console.log('get lista maestros')
+/*---------------------------------------Docentes----------------------------------------*/
+/*Get-Docentes*/
+router.get('/docentes',(req,res)=>{
+    console.log('get lista docentes')
     mysqlConnection.query('select d.id, d.id_persona, d.fecha_ingreso, p.nombre, p.apellido, p.fecha_nacimiento, p.Direccion from oexk6sn6x2lc0kha.docente d join oexk6sn6x2lc0kha.persona p on d.id_persona=p.id;',(err,rows,fields)=>{
         if(!err){
             res.send(rows);
@@ -16,9 +16,9 @@ router.get('/maestros',(req,res)=>{
         }
     })
 });
-/*Get-id-Maestros*/
-router.get('/maestros/:id',(req,res)=>{
-    console.log('get maestro')
+/*Get-id-Docentes*/
+router.get('/docentes/:id',(req,res)=>{
+    console.log('get docentes')
     mysqlConnection.query('select d.id, d.id_persona, d.fecha_ingreso, p.nombre, p.apellido, p.fecha_nacimiento, p.Direccion from oexk6sn6x2lc0kha.docente d join oexk6sn6x2lc0kha.persona p on d.id_persona=p.id where d.id = ?;',[req.params.id],(err,rows,fields)=>{
         if(!err){
             res.send(rows);
@@ -28,13 +28,13 @@ router.get('/maestros/:id',(req,res)=>{
         }
     })
 });
-/*Insert-Maestros*/
-router.post('/maestros',(req,res)=>{
-    console.log('Insert maestros')
+/*Insert-Docentes*/
+router.post('/docentes',(req,res)=>{
+    console.log('Insert docentes')
     let emp=req.body;
     console.log(emp);
     mysqlConnection.query('insert into docente (id_persona, fecha_ingreso) values (?,?)',
-    [emp.IdPersona,emp.FechaIngreso],(err,result)=>{
+    [emp.id_persona,emp.fecha_ingreso],(err,result)=>{
         if(!err){
             console.log(result);
             res.status(201).send('created Successfully');
@@ -45,12 +45,12 @@ router.post('/maestros',(req,res)=>{
     })
 });
 
-/*Update-Maestros*/
-router.put('/maestros/:id',(req,res)=>{
-    console.log('Update maestros')
+/*Update-Docentes*/
+router.put('/docentes/:id',(req,res)=>{
+    console.log('Update docentes')
     let emp=req.body;
     mysqlConnection.query('update docente set id_persona=?, fecha_ingreso=? where id=?',
-    [emp.IdPersona,emp.FechaIngreso,req.params.id],(err,result)=>{
+    [emp.id_persona,emp.fecha_ingreso,req.params.id],(err,result)=>{
         if(!err){
             console.log(result);
             res.status(202).send('Updated Successfully');
@@ -61,9 +61,9 @@ router.put('/maestros/:id',(req,res)=>{
     })
 });
 
-/*Delete-Maestros*/
-router.delete('/maestros/:id',(req,res)=>{
-    console.log('Delete maestro')
+/*Delete-Docentes*/
+router.delete('/docentes/:id',(req,res)=>{
+    console.log('Delete docentes')
     mysqlConnection.query('delete from docente where id = ?',[req.params.id],(err,result)=>{
         if(!err){
             console.log(result);

@@ -24,7 +24,7 @@ export class MiFormularioComponent {
   }
 
   onAgregar(){
-    console.log(this.form)
+    /*console.log(this.form)*/
 
     const persona:Persona ={
       id:this.form.value.id,
@@ -33,10 +33,11 @@ export class MiFormularioComponent {
       fecha_nacimiento:this.form.value.fecha_nacimiento,
       Direccion:this.form.value.Direccion,
     }
-    console.log(persona);
+    /*console.log(persona);*/
 
-    this.personaService.postPersonas(persona).subscribe();
+    this.personaService.postPersonas(persona);
     this.router.navigate(['/personas']);
+    setTimeout(location.reload.bind(location), 500);
 
   }
 }

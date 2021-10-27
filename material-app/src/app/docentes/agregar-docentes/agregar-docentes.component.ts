@@ -36,8 +36,9 @@ export class AgregarDocentesComponent {
     }
     console.log(docente);
 
-    this.docentesService.postDocentes(docente).subscribe();
+    this.docentesService.postDocentes(docente);
     this.router.navigate(['/docentes']);
+    setTimeout(location.reload.bind(location), 500);
 
   }
 }

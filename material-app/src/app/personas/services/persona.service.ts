@@ -23,7 +23,9 @@ export class PersonaService {
 
   postPersonas(persona:Persona)
   {
-    return this.httClient.post(this.URL, persona);
+    return this.httClient.post(this.URL, persona).subscribe(
+      res => console.log(res)
+    )
   }
 
   deletePersonas(id:string){
@@ -32,8 +34,10 @@ export class PersonaService {
     )
   }
 
-  putPersona(id:string, persona:Persona): Observable<Persona[]>{
-    return this.httClient.put<Persona[]>(this.URL+'/'+id, persona);
+  putPersona(id:string, persona:Persona){
+    return this.httClient.put(this.URL+'/'+id, persona).subscribe(
+      res => console.log(res)
+    )
   }
 
 

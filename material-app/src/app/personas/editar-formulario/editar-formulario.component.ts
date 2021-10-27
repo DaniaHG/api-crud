@@ -42,15 +42,8 @@ export class EditarFormularioComponent implements OnInit{
 
   }
   onActualizar(){
-    this.personaService.putPersona(this.persona.id, this.persona).subscribe(
-      res=>{
-        console.log(res)
-      },
-      err=>console.log(err)
-    );
-
+    this.personaService.putPersona(this.persona.id, this.persona);
     this.router.navigate(['/personas'])
-
 
   }
 }

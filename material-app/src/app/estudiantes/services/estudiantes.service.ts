@@ -22,7 +22,9 @@ export class EstudiantesService {
 
   postEstudiantes(estudiante:Estudiante)
   {
-    return this.httClient.post(this.URL,estudiante);
+    return this.httClient.post(this.URL,estudiante).subscribe(
+      res => console.log(res)
+    )
   }
 
   deleteEstudiantes(id:string){
@@ -31,8 +33,10 @@ export class EstudiantesService {
     )
   }
 
-  putEstudiantes(id:string, estudiante:Estudiante): Observable<Estudiante[]>{
-    return this.httClient.put<Estudiante[]>(this.URL+'/'+id, estudiante);
+  putEstudiantes(id:string, estudiante:Estudiante){
+    return this.httClient.put(this.URL+'/'+id, estudiante).subscribe(
+      res => console.log(res)
+    )
   }
 
 }

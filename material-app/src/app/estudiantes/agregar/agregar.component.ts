@@ -27,7 +27,7 @@ export class AgregarComponent {
   constructor(private fb: FormBuilder, private estudiantesService:EstudiantesService, private router:Router) {}
 
   onAgregar(){
-    console.log(this.form)
+    /*console.log(this.form)*/
 
     const estudiante:Estudiante ={
       id:this.form.value.id,
@@ -40,10 +40,11 @@ export class AgregarComponent {
       Direccion:this.form.value.Direccion,
       status:this.form.value.status
     }
-    console.log(estudiante);
+    /*console.log(estudiante);*/
 
-    this.estudiantesService.postEstudiantes(estudiante).subscribe();
+    this.estudiantesService.postEstudiantes(estudiante);
     this.router.navigate(['/estudiantes']);
+    setTimeout(location.reload.bind(location), 500);
 
   }
 }

@@ -21,7 +21,7 @@ export class MostrarDocentesComponent implements AfterViewInit, OnInit{
   displayedColumns = ['id', 'id_persona', 'fecha_ingreso','nombre','apellido','fecha_nacimiento','Direccion','Acciones'];
 
   constructor(private docentesService:DocentesService, private router:Router) {
-
+    this.listarDocentes();
   }
 
   ngOnInit(): void {
@@ -37,10 +37,11 @@ export class MostrarDocentesComponent implements AfterViewInit, OnInit{
   }
 
   eliminarDocentes(id:string){
-    console.log(id);
     this.docentesService.deleteDocentes(id);
     this.listarDocentes();
+    setTimeout(location.reload.bind(location), 500);
   }
+
 
   modificarDocentes(id:string){
     this.router.navigate(['/editar-docentes/'+id]);

@@ -44,15 +44,8 @@ export class ModificarComponent implements OnInit {
 
   }
   onActualizar(){
-    this.estudianteService.putEstudiantes(this.estudiante.id, this.estudiante).subscribe(
-      res=>{
-        console.log(res)
-      },
-      err=>console.log(err)
-    );
-
-    this.router.navigate(['/estudiantes'])
-
+    this.estudianteService.putEstudiantes(this.estudiante.id, this.estudiante);
+    this.router.navigate(['/estudiantes']);
 
   }
 }

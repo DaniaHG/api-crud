@@ -22,7 +22,7 @@ export class MostrarComponent implements AfterViewInit, OnInit{
 
 
   constructor(private estudiantesService:EstudiantesService, private router:Router) {
-
+    this.listarEstudiantes();
   }
 
   ngOnInit(): void {
@@ -32,15 +32,16 @@ export class MostrarComponent implements AfterViewInit, OnInit{
   listarEstudiantes(){
     this.dataSource = new MostrarDataSource();
     this.estudiantesService.getEstudiantes().subscribe(
-      res=> this.dataSource.data = res,
-      err => console.log(err)
+      res=>{
+        this.dataSource.data = res;
+      }
     );
   }
 
   eliminarEstudiantes(id:string){
-    console.log(id);
     this.estudiantesService.deleteEstudiantes(id);
     this.listarEstudiantes();
+    setTimeout(location.reload.bind(location), 500);
   }
 
   modificarEstudiantes(id:string){

@@ -25,7 +25,7 @@
       <div class="row">
         <div class="col">
           <mat-form-field class="full-width">
-            <input matInput placeholder="Fecha Nacimiento" formControlName="fecha_nacimiento">
+            <input matInput type = "date" placeholder="Fecha Nacimiento" formControlName="fecha_nacimiento" >
             <mat-error *ngIf="form.controls['fecha_nacimiento'].hasError('required')">
               <strong>required</strong>
             </mat-error>

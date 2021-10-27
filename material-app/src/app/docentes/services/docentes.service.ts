@@ -23,11 +23,15 @@ export class DocentesService {
 
   postDocentes(docente:Docente)
   {
-    return this.http.post(this.URL,docente);
+    return this.http.post(this.URL,docente).subscribe(
+      res => console.log(res)
+    )
   }
 
-  putDocentes(id:string, docente:Docente): Observable<Docente[]>{
-    return this.http.put<Docente[]>(this.URL+'/'+id, docente);
+  putDocentes(id:string, docente:Docente){
+    return this.http.put(this.URL+'/'+id, docente).subscribe(
+      res => console.log(res)
+    )
   }
 
   deleteDocentes(id:string){

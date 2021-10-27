@@ -42,15 +42,8 @@ export class ModificarDocentesComponent implements OnInit  {
 
   }
   onActualizar(){
-    this.docentesService.putDocentes(this.docente.id, this.docente).subscribe(
-      res=>{
-        console.log(res)
-      },
-      err=>console.log(err)
-    );
-
+    this.docentesService.putDocentes(this.docente.id, this.docente);
     this.router.navigate(['/docentes'])
-
 
   }
 }

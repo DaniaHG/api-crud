@@ -21,25 +21,27 @@ export class MiTablaComponent implements AfterViewInit, OnInit {
   displayedColumns = ['id', 'nombre', 'apellido', 'fecha_nacimiento', 'Direccion', 'Acciones'];
 
   constructor(private personaService : PersonaService, private router:Router) {
-
+    this.listarPersonas();
   }
 
   ngOnInit(): void {
+
     this.listarPersonas();
   }
 
   listarPersonas(){
     this.dataSource = new MiTablaDataSource();
     this.personaService.getPersonas().subscribe(
-      res=> this.dataSource.data = res,
-      err => console.log(err)
-    );
+      res=>{
+        this.dataSource.data = res;
+      }
+    )
   }
 
   eliminarPersonas(id:string){
-    console.log(id);
     this.personaService.deletePersonas(id);
     this.listarPersonas();
+    setTimeout(location.reload.bind(location), 500);
   }
 
   modificarPersonas(id:string){
